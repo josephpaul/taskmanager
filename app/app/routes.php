@@ -76,3 +76,13 @@ Route::get("project/{org_id}/{id}",function($org_id,$id){
 		// 	echo $value->user->name;
 		// }
 		}
+		return View::make("projects.home")
+->with(["org_id"=>$org_id,"id"=>$id])
+->with("page","pro")
+->with("username",$username)
+->with("task",Task::where("admin",'=',Auth::id())
+	->where("org_id","=",$org_id)
+	->where("pro_id","=",$id)
+	->get());
+//->with("username",Org::find($org_id)->orguser);
+});
