@@ -106,3 +106,9 @@ return View::make("projects.add")
 ->withProuser($prouser);
 });
 Route::post("project/{org_id}/{id}/addnew","TaskController@Post_Add");
+Route::get("/test",function()
+	{
+	$org=Org::find(7)->projects();
+	print_r("adfa".$org);
+	});
+Route::post("/pro/adduser","ProController@Post_AddUser");
