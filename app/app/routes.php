@@ -11,28 +11,43 @@
 |
 */
 
+
 Route::get("login","UserController@Get_login");
+
 Route::post("login","UserController@Post_login");
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::group(["before"=>"auth"],function()
+	{
+
+
 Route::get('/home',function()
 {
 	return View::make('home')
 	->with("page","home");
 });
+
 Route::get("/org/add", ['as'=>'OrgAdd', 'uses'=>'OrgController@Get_Add']);
+
 Route::post("/org/addnew","OrgController@Post_Add");
+
 Route::get("org",function()
 {
 	return View::make("org.list")
 	->with("org",Org::where("admin",Auth::id())->paginate(2))
 	->with("page","org");
 });
+
 Route::get("signup",["as"=>"Signup", "uses"=>"UserController@Get_Add"]);
+
 Route::post("user/addnew","UserController@Post_Add");
+
 Route::get("/emailconfirm/{id}/{code}","UserController@Get_Emailconfirm");
+
 Route::get("org/{id}",function($id){
 
 $tmp=Org::find($id)->orguser;
@@ -57,13 +72,16 @@ return View::make("org.home")
 ->withId($id)
 ->with("orgusr",$tmp);
 });
+
 Route::post("pro","ProController@Post_Add");
+
 Route::get("signout",function(){
 Auth::logout();
 return Redirect::to("login")
 ->withError(false)
 ->withMsg("Successfully Signout");
 });
+
 Route::get("project/{org_id}/{id}",function($org_id,$id){
 	$userid=Org::find($org_id)->orguser;
 	foreach($userid as $userid)
@@ -76,7 +94,10 @@ Route::get("project/{org_id}/{id}",function($org_id,$id){
 		// 	echo $value->user->name;
 		// }
 		}
-		return View::make("projects.home")
+
+		
+	// exit();
+return View::make("projects.home")
 ->with(["org_id"=>$org_id,"id"=>$id])
 ->with("page","pro")
 ->with("username",$username)
@@ -86,6 +107,7 @@ Route::get("project/{org_id}/{id}",function($org_id,$id){
 	->get());
 //->with("username",Org::find($org_id)->orguser);
 });
+
 Route::get("project/{org_id}/{id}/add",function($org_id,$id){
 	//$userd=User::where("org","=",);
 	$prouser=ProUser::where("pro_id", "=", $id)->get();
@@ -105,11 +127,21 @@ return View::make("projects.add")
 ->with("page","proadd")
 ->withProuser($prouser);
 });
+
 Route::post("project/{org_id}/{id}/addnew","TaskController@Post_Add");
+
+
+
+
 Route::get("/test",function()
 	{
 	$org=Org::find(7)->projects();
 	print_r("adfa".$org);
 	});
+
 Route::post("/pro/adduser","ProController@Post_AddUser");
+
 Route::post("pro/adduspro","ProController@Post_AddProUser");
+
+
+});
