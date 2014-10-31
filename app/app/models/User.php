@@ -55,6 +55,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 
+	public function org()
+	{
+		return $this->belongsTo('Org', '');
+	}
+
+	public function orguser()
+	{
+		return $this->belongsTo('OrgUser', "id", "user_id");
+	}
 
 
 }
