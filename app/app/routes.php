@@ -13,3 +13,7 @@
 
 Route::get("login","UserController@Get_login");
 Route::post("login","UserController@Post_login");
+Route::get('/', function()
+{
+	return View::make('hello');
+});
