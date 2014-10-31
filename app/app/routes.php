@@ -112,3 +112,4 @@ Route::get("/test",function()
 	print_r("adfa".$org);
 	});
 Route::post("/pro/adduser","ProController@Post_AddUser");
+Route::post("pro/adduspro","ProController@Post_AddProUser");
