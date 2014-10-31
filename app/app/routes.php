@@ -24,3 +24,9 @@ Route::get('/home',function()
 });
 Route::get("/org/add", ['as'=>'OrgAdd', 'uses'=>'OrgController@Get_Add']);
 Route::post("/org/addnew","OrgController@Post_Add");
+Route::get("org",function()
+{
+	return View::make("org.list")
+	->with("org",Org::where("admin",Auth::id())->paginate(2))
+	->with("page","org");
+});
