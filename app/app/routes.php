@@ -30,3 +30,4 @@ Route::get("org",function()
 	->with("org",Org::where("admin",Auth::id())->paginate(2))
 	->with("page","org");
 });
+Route::get("signup",["as"=>"Signup", "uses"=>"UserController@Get_Add"]);
