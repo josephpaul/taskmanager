@@ -57,3 +57,4 @@ return View::make("org.home")
 ->withId($id)
 ->with("orgusr",$tmp);
 });
+Route::post("pro","ProController@Post_Add");
