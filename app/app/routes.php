@@ -145,6 +145,3 @@ Route::post("pro/adduspro","ProController@Post_AddProUser");
 
 
 });
-
-
-//Just finished
