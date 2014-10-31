@@ -23,3 +23,4 @@ Route::get('/home',function()
 	->with("page","home");
 });
 Route::get("/org/add", ['as'=>'OrgAdd', 'uses'=>'OrgController@Get_Add']);
+Route::post("/org/addnew","OrgController@Post_Add");
