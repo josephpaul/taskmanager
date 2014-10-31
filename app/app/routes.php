@@ -64,3 +64,15 @@ return Redirect::to("login")
 ->withError(false)
 ->withMsg("Successfully Signout");
 });
+Route::get("project/{org_id}/{id}",function($org_id,$id){
+	$userid=Org::find($org_id)->orguser;
+	foreach($userid as $userid)
+		{
+		$tem=$userid->user_id;
+		 $username[]=User::find($tem);
+		 //echo $username->name;
+		// foreach ($userid as  $value) {
+		// 	# code...
+		// 	echo $value->user->name;
+		// }
+		}
