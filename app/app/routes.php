@@ -33,3 +33,27 @@ Route::get("org",function()
 Route::get("signup",["as"=>"Signup", "uses"=>"UserController@Get_Add"]);
 Route::post("user/addnew","UserController@Post_Add");
 Route::get("/emailconfirm/{id}/{code}","UserController@Get_Emailconfirm");
+Route::get("org/{id}",function($id){
+
+$tmp=Org::find($id)->orguser;
+//print_r($tmp);
+
+
+// foreach($tmp as $tmp):
+// 	foreach($tmp->user as $tmp1):
+//   echo $tmp1->name."<br>";
+//      endforeach;
+// 	endforeach;
+
+
+// exit;
+
+
+
+
+return View::make("org.home")
+->with("pro",Projects::where("org_id","=",$id)
+->where("admin","=",Auth::id())->get())
+->withId($id)
+->with("orgusr",$tmp);
+});
