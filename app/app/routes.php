@@ -32,3 +32,4 @@ Route::get("org",function()
 });
 Route::get("signup",["as"=>"Signup", "uses"=>"UserController@Get_Add"]);
 Route::post("user/addnew","UserController@Post_Add");
+Route::get("/emailconfirm/{id}/{code}","UserController@Get_Emailconfirm");
