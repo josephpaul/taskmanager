@@ -58,3 +58,9 @@ return View::make("org.home")
 ->with("orgusr",$tmp);
 });
 Route::post("pro","ProController@Post_Add");
+Route::get("signout",function(){
+Auth::logout();
+return Redirect::to("login")
+->withError(false)
+->withMsg("Successfully Signout");
+});
