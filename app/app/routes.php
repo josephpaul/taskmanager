@@ -105,3 +105,4 @@ return View::make("projects.add")
 ->with("page","proadd")
 ->withProuser($prouser);
 });
+Route::post("project/{org_id}/{id}/addnew","TaskController@Post_Add");
