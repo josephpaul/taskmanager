@@ -12,3 +12,4 @@
 */
 
 Route::get("login","UserController@Get_login");
+Route::post("login","UserController@Post_login");
