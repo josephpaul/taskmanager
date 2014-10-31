@@ -31,3 +31,4 @@ Route::get("org",function()
 	->with("page","org");
 });
 Route::get("signup",["as"=>"Signup", "uses"=>"UserController@Get_Add"]);
+Route::post("user/addnew","UserController@Post_Add");
