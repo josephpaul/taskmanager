@@ -22,3 +22,4 @@ Route::get('/home',function()
 	return View::make('home')
 	->with("page","home");
 });
+Route::get("/org/add", ['as'=>'OrgAdd', 'uses'=>'OrgController@Get_Add']);
