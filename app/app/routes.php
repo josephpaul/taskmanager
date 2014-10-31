@@ -86,3 +86,22 @@ Route::get("project/{org_id}/{id}",function($org_id,$id){
 	->get());
 //->with("username",Org::find($org_id)->orguser);
 });
+Route::get("project/{org_id}/{id}/add",function($org_id,$id){
+	//$userd=User::where("org","=",);
+	$prouser=ProUser::where("pro_id", "=", $id)->get();
+
+
+
+    //echo $pro->org->orguser;exit;
+   //$orguser=OrgUser::find(1)->org;
+
+   // echo $orguser->user;exit;
+    //echo $pro->org->orguser;
+    // $tmp=$pro->org->orguser;
+
+
+return View::make("projects.add")
+->with(["org_id"=>$org_id,"id"=>$id])
+->with("page","proadd")
+->withProuser($prouser);
+});
